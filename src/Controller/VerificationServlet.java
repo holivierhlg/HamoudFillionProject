@@ -1,11 +1,14 @@
 package Controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Model.Conges;
 
 /**
  * Servlet implementation class VerificationServlet
@@ -19,22 +22,39 @@ public class VerificationServlet extends HttpServlet {
      */
     public VerificationServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		
+		response.setContentType("text/html");
+		
+		// Get the chosen day
+		int day = Integer.parseInt(request.getParameter("day"));
+		
+		// Boolean to save if the leave has been accepted or not
+		boolean accepted = false;
+		
+		// Create an instance and check if the day is free or not
+		Conges conges = Conges.instance();
+		if (conges.verifierJour(day))
+		{
+			conges.poserJour(day);
+			accepted = true;
+		}
+		
+		// Send the result to the request
+		request.setAttribute("accepted", accepted);
+		
+		this.getServletContext().getRequestDispatcher("/resultatDemande.jsp").forward(request, response);	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
