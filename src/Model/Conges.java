@@ -47,5 +47,5 @@ public class Conges {
 	public void poserJour(int jour) {
 		jours[jour]=Boolean.FALSE;
 	}
-	
+
 }
