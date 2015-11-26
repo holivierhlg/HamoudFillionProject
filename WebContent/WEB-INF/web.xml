@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>HamoudFillionProject</display-name>
-  
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  
-  <servlet>
-    <servlet-name>VerificationServlet</servlet-name>
-    <servlet-class>Controller.VerificationServlet</servlet-class>
-  </servlet>
-
+<web-app id="WebApp_ID" version="3.0"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+ <display-name>HamoudFillionProject</display-name>
+ <servlet>
+  <servlet-name>VerificationServlet</servlet-name>
+  <servlet-class>src.Controller.VerificationServlet</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>AuthentificationServlet</servlet-name>
+  <servlet-class>src.Controller.AuthentificationServlet</servlet-class>
+ </servlet>
+ <session-config>
+  <cookie-config>
+   <name>conge</name>
+  </cookie-config>
+  <tracking-mode>COOKIE</tracking-mode>
+ </session-config>
+ <welcome-file-list>
+  <welcome-file>index.jsp</welcome-file>
+ </welcome-file-list>
+ <login-config>
+  <auth-method>BASIC</auth-method>
+  <form-login-config>
+   <form-login-page>/index.jsp</form-login-page>
+   <form-error-page>/error.jsp</form-error-page>
+  </form-login-config>
+ </login-config>
 </web-app>

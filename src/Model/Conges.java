@@ -1,4 +1,4 @@
-package Model;
+package src.Model;
 
 public class Conges {
 
@@ -29,7 +29,7 @@ public class Conges {
 	}
 	
 	/**
-	* @param jour du congŽ
+	* @param jour du congï¿½
 	* @return vrai si le jour est dispo false si le jour est pris ou la valeur de jour n'est pas valide
 	*/
 	public boolean verifierJour(int jour) {
@@ -41,8 +41,8 @@ public class Conges {
 	}
 	
 	/**
-	* @param jour du congŽ
-	* La fonction permet de poser un jour de congŽ
+	* @param jour du congï¿½
+	* La fonction permet de poser un jour de congï¿½
 	*/
 	public void poserJour(int jour) {
 		jours[jour]=Boolean.FALSE;
